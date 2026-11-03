@@ -1,0 +1,12 @@
+{
+  "internalName": "OpenTorrents",
+  "name": "Open Torrents",
+  "version": "1",
+  "kind": "torrent",
+  "languages": ["en"],
+  "types": ["movie"],
+  "ids": ["tmdb"],
+  "search": false,
+  "minApi": 1,
+  "entry": "fourk.sample.OpenTorrents"
+}

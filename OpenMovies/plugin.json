@@ -1,0 +1,15 @@
+{
+  "internalName": "OpenMovies",
+  "name": "Open Movies",
+  "version": "1",
+  "kind": "online",
+  "languages": ["en"],
+  "types": ["movie"],
+  "ids": ["tmdb"],
+  "search": true,
+  "minApi": 1,
+  "entry": "fourk.sample.OpenMovies",
+  "settings": [
+    { "key": "region", "label": "Region", "type": "select", "options": ["eu", "us"], "default": "eu" }
+  ]
+}

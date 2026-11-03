@@ -1,0 +1,36 @@
+name: Build plugins
+
+# Every push to main builds every plugin (jar -> dex -> .4ks) and publishes them with plugins.json on the
+# "builds" branch. Users add: https://raw.githubusercontent.com/<owner>/<repo>/builds/plugins.json
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+      # ubuntu runners ship the Android SDK (ANDROID_HOME), which has d8
+      - name: Make plugins
+        env:
+          FOURK_API: ${{ vars.FOURK_API }}
+        run: |
+          chmod +x gradlew
+          ./gradlew make --no-daemon ${FOURK_API:+-PfourkApi=$FOURK_API}
+      - name: Publish to the builds branch
+        run: |
+          cd build/repo
+          git init -q
+          git checkout -q -b builds
+          git add .
+          git -c user.name="github-actions" -c user.email="github-actions@users.noreply.github.com" commit -q -m "Build ${GITHUB_SHA::7}"
+          git push -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git" builds
