@@ -1,0 +1,12 @@
+{
+  "internalName": "Torrentio",
+  "name": "Torrentio",
+  "version": "1",
+  "kind": "torrent",
+  "languages": ["en"],
+  "types": ["movie", "series", "anime"],
+  "ids": ["imdb", "kitsu", "anilist"],
+  "search": false,
+  "minApi": 1,
+  "entry": "fourk.torrentio.Torrentio"
+}
