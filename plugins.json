@@ -1,0 +1,80 @@
+{
+    "api": 1,
+    "name": "4k Stream Plugins",
+    "author": "4k Stream",
+    "plugins": [
+        {
+            "internalName": "OpenMovies",
+            "name": "Open Movies",
+            "version": "1",
+            "kind": "online",
+            "languages": [
+                "en"
+            ],
+            "types": [
+                "movie"
+            ],
+            "ids": [
+                "tmdb"
+            ],
+            "search": true,
+            "minApi": 1,
+            "settings": [
+                {
+                    "key": "region",
+                    "label": "Region",
+                    "type": "select",
+                    "options": [
+                        "eu",
+                        "us"
+                    ],
+                    "default": "eu"
+                }
+            ],
+            "url": "OpenMovies.4ks",
+            "sha256": "0431be16b05a44f7037747210f117febfdac67af497c9016f156096ef90624f7"
+        },
+        {
+            "internalName": "OpenTorrents",
+            "name": "Open Torrents",
+            "version": "1",
+            "kind": "torrent",
+            "languages": [
+                "en"
+            ],
+            "types": [
+                "movie"
+            ],
+            "ids": [
+                "tmdb"
+            ],
+            "search": false,
+            "minApi": 1,
+            "url": "OpenTorrents.4ks",
+            "sha256": "60ae9d62513deed366e5199509c4e26a64b2af23c9a4c58d69889d8d2b287de5"
+        },
+        {
+            "internalName": "Torrentio",
+            "name": "Torrentio",
+            "version": "1.1",
+            "kind": "torrent",
+            "languages": [
+                "en"
+            ],
+            "types": [
+                "movie",
+                "series",
+                "anime"
+            ],
+            "ids": [
+                "imdb",
+                "kitsu",
+                "anilist"
+            ],
+            "search": false,
+            "minApi": 1,
+            "url": "Torrentio.4ks",
+            "sha256": "1f494c109cc20d9a0e272c57eca2cc86f0c241c1cc8737ed7fabf08128da1d10"
+        }
+    ]
+}
