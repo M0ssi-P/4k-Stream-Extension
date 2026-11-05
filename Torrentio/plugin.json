@@ -1,7 +1,7 @@
 {
   "internalName": "Torrentio",
   "name": "Torrentio",
-  "version": "1",
+  "version": "1.1",
   "kind": "torrent",
   "languages": ["en"],
   "types": ["movie", "series", "anime"],

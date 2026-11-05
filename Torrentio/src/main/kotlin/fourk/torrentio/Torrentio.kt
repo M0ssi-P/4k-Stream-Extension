@@ -19,7 +19,7 @@ class Torrentio : Provider() {
 
     // shortcut: one Kitsu lookup per call, no cache; add one if Kitsu starts rate-limiting
     private suspend fun kitsuFor(anilist: Int): Int? {
-        val res = host.http.get("$KITSU/mappings?filter%5BexternalSite%5D=anilist%2Fanime&filter%5BexternalId%5D=$anilist", emptyMap())
+        val res = host.http.get("$KITSU/mappings?filter[externalSite]=anilist/anime&filter[externalId]=$anilist&include=item", emptyMap())
         check(res.code == 200) { "Kitsu returned HTTP ${res.code}" }
         return kitsuId(host.json.parse(res.text))
     }
