@@ -8,7 +8,8 @@ private const val BASE = "https://torrentio.strem.fun"
 class Torrentio : Provider() {
     override suspend fun streams(query: TitleQuery): List<Source> {
         // Torrentio only knows Kitsu ids for anime, so translate the app's AniList id first
-        val q = if (query.type == "anime" && query.kitsu == null && query.anilist != null) query.copy(kitsu = kitsuFor(query.anilist)) else query
+        val anilist = query.anilist
+        val q = if (query.type == "anime" && query.kitsu == null && anilist != null) query.copy(kitsu = kitsuFor(anilist)) else query
         val path = streamPath(q) ?: return emptyList()
         val res = host.http.get("$BASE/stream/$path.json", emptyMap())
         check(res.code == 200) { "Torrentio returned HTTP ${res.code}" }
@@ -56,7 +57,7 @@ internal fun toSource(s: Map<String, Any?>): Source? {
         language = "en",
         kind = "torrent",
         infoHash = hash,
-        size = size(title),
+        size = size(title) ?: 0L, // the API wants a Long; 0 = unknown
         file = FileHint(index = (s["fileIdx"] as? Number)?.toInt(), name = hints?.get("filename") as? String),
     )
 }
